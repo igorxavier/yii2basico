@@ -74,7 +74,7 @@ Se você ainda esta no seguinte caminho:
 Então acesse a pasta pública do yii onde vamos rodar o servidor embutido do PHP.
 
 ```sh
-cd yii/web
+cd curso/web
 ```
 E Agora vamos levantar o servidor embutido.
 
@@ -104,7 +104,6 @@ $config = [
 //            'class' => 'yii\rbac\DbManager',
 //        ],
         'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'gkakV-1d1kf3qH0mdMDgTF0l8jXuu2p2',
         ],
         'cache' => [
