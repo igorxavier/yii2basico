@@ -159,6 +159,7 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
     ],
+    // 2 - Nossa sengunda configuração, criamos o array MODULES e ativamos o módulo admin. 
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module',
@@ -188,3 +189,46 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule . index.php
 ```
+
+### Criando módulo admin
+
+Vamos agora trabalhar com o **gii**, um gerador de códigos que acompanha o Yii e facilita muito nosso trabalho.
+
+Se você estiver utilizando o mesmo IP que utilizamos para levantar nosso servidor embutido do PHP,
+Acesse a seguite url:
+
+```
+http://127.0.0.1:8000/gii
+```
+
+Clique em **Module Generator**, posicione o mouse sobre o label Module Class e observe a recomendação.
+Neste campo vamos utilizar exatamente esta recomendação para nosso módulo admin.
+
+```
+app\modules\admin\Module
+```
+E em Module Admin
+
+```
+admin
+```
+
+###### Segunda configuração
+
+Assim que geramos nosso módulo será exibido o código para ativalo em nosso sistema.
+
+```
+<?php
+    ......
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+        ],
+    ],
+    ......
+
+```
+
+Veja no arquivo que tinhamos com algumas configuraçõs prontas a localização exata onde este código deve ser inserido. 
+
+>**OBS:** Respeite a posição do código dentro do array.
