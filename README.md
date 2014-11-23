@@ -92,6 +92,10 @@ Agora pressione a tecla CTRL e clique sobre o ip 127.0.0.1:8000 no terminal, ou 
 
 ### Configurações do nosso projeto do curso.
 
+O arquivo **web.php** que esta localizado na pasta **config**, vai receber algumas das principais configurações do nosso projeto.
+
+Estou deixando algumas cofigurações já feitas, mas observe nos comentários que temos uma ordem, então vamos implementando uma configuração por vez.
+
 ```php
 $config = [
     'id' => 'basic',
@@ -100,9 +104,6 @@ $config = [
     'defaultRoute' => 'site',
     'language' => 'pt-BR',
     'components' => [
-//        'authManager' => [
-//            'class' => 'yii\rbac\DbManager',
-//        ],
         'request' => [
             'cookieValidationKey' => 'gkakV-1d1kf3qH0mdMDgTF0l8jXuu2p2',
         ],
@@ -133,6 +134,7 @@ $config = [
                 ],
             ],
         ],
+        // 1 - Primeiro componente a ser ativado, URL's amigáveis. 
         'urlManager' => [
             'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
@@ -151,4 +153,21 @@ $config = [
         ],
     ],
 ];
+```
+
+<hr />
+
+###### Primeira configuração
+
+A primeira configuração que vamos fazer no arquivo acima, é a que em resumo, ativa um componente para que tenhamos URL's amigáveis.
+
+Após fazer esta configuração devemos criar um arquivo .htaccess dentro da pasta **web** do nosso projeto, com a seguinte configuração:
+
+```
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d 
+
+RewriteRule . index.php
 ```
