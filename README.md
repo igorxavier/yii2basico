@@ -5,24 +5,21 @@
 ###### Instalando Apache2, PHP5(+extensões necessárias) e Mysql.
 
 ```sh
-$ sudo apt-get install apache2 php5 php5-intl php5-mcrypt php5-curl php5-mysql mysql-client mysql-server
-
+sudo apt-get install apache2 php5 php5-intl php5-mcrypt php5-curl php5-mysql mysql-client mysql-server
 ```
 Durante a instalação será solicitado que você entre com o nome de admin para o Mysql, deixe o padrão(root), também será solicitada a senha, **NÃO** deixe esta senha em branco em hipótese alguma, pois diferente de quando você instala este pacote no Windows(Ex. WAMP), que permite o uso de uma senha em branco, aqui no linux você terá sérios problemas.
 
 ###### Instalando o PhpMyAdmin.
 
 ```sh
-$ sudo apt-get install phpmyadmin
-
+sudo apt-get install phpmyadmin
 ```
 Aqui será solicitado que você entre com a senha configurada para o Mysql.
 
 > Se você não é familiarizado com a utilização do terminal para navegar nos arquivos do linux sugiro que que rode também o seguinte comando:
 
 ```sh
-$ sudo apt-get install nautilus-open-terminal
-
+sudo apt-get install nautilus-open-terminal
 ```
 Após ter rodado os comandos acima reinicie seu computador, ao retornar ao sistema você já estara com seu sistema em uma configuração mínima necessária para trabalhar-mos com o Yii2. Agora você deve buscar através do gerenciador de arquivos o seguinte caminho:
 
@@ -39,17 +36,16 @@ Você deve ter algo semelhante a isto:
 
 ```sh
 @SeuComputador:/var/www/html$
-
 ```
 <hr />
 
 ### Instalando o Composer
 
 ```sh
-$ curl -s http://getcomposer.org/installer | php
-
-$ mv composer.phar /usr/local/bin/composer
-
+curl -s http://getcomposer.org/installer | php
+```
+```sh
+mv composer.phar /usr/local/bin/composer
 ```
 
 O Composer nada mais é que um instalador de dependências!
@@ -62,10 +58,10 @@ Veja mais sobre o Compoer: [https://getcomposer.org/](https://getcomposer.org/)
 ### Instalando o Yii
 
 ```sh
-$ composer global require "fxp/composer-asset-plugin:1.0.0-beta3"
-
-$ composer create-project --prefer-dist yiisoft/yii2-app-basic curso
-
+composer global require "fxp/composer-asset-plugin:1.0.0-beta3"
+```
+```sh
+composer create-project --prefer-dist yiisoft/yii2-app-basic curso
 ```
 
 ###### Testando nossa instalação
@@ -74,19 +70,16 @@ Se você ainda esta no seguinte caminho:
 
 ```sh
 @SeuComputador:/var/www/html$
-
 ```
 Então acesse a pasta pública do yii onde vamos rodar o servidor embutido do PHP.
 
 ```sh
-$ cd yii/web
-
+cd yii/web
 ```
 E Agora vamos levantar o servidor embutido.
 
 ```sh
-$ php -S 127.0.0.1:8000
-
+php -S 127.0.0.1:8000
 ```
 
 Agora pressione a tecla CTRL e clique sobre o ip 127.0.0.1:8000 no terminal, ou digite este ip no seu navegador.
@@ -159,5 +152,4 @@ $config = [
         ],
     ],
 ];
-    
 ```
