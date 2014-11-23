@@ -92,6 +92,23 @@ Agora pressione a tecla CTRL e clique sobre o ip 127.0.0.1:8000 no terminal, ou 
 
 ### Configurações do nosso projeto do curso.
 
+###### Configurando o acesso ao banco de dados
+
+Vamos configurar nosso banco no arquivo **db.php** que esta localizado na pasta **config**.
+Basicamente neste arquivo vamos informar a senha de acesso ao nosso mysql, e também o nome do nosso banco de dados.
+
+```php
+return [
+    'class' => 'yii\db\Connection',
+    'dsn' => 'mysql:host=localhost;dbname= >>>>>> NOME DO NOSSO BANCO <<<<<< ',
+    'username' => 'root',
+    'password' => ' >>>>>> SENHA CONFIGURADA PARA ACESSO AO MYSQL <<<<<< ',
+    'charset' => 'utf8',
+];
+```
+
+###### Configurando módulos e componentes do Yii
+
 O arquivo **web.php** que esta localizado na pasta **config**, vai receber algumas das principais configurações do nosso projeto.
 
 Estou deixando algumas cofigurações já feitas, mas observe nos comentários que temos uma ordem, então vamos implementando uma configuração por vez.
