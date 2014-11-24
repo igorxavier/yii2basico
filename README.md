@@ -271,8 +271,32 @@ Ainda no **gii** vamos em Model Generator, aqui vamos preencher o campo **Table 
 >OBS: Logo abaixo do campo Model Class temos o **Namespace**, este campo aparece preenchido e desabilitado, vamos então clicar nele e indicar o namespace correto para cada um de nossos módulos:
 
 ```
-app\modules\admin\modules\cursos\models
-```
-```
 app\modules\admin\modules\categorias\models
 ```
+```
+app\modules\admin\modules\cursos\models
+```
+### Gerando o CRUD
+
+Agora é a vez de gerarmos nossos CRUD's para categorias e cursos.
+Vamos ter caminhos bastante longos para informar ao nosso projeto, mas com atenção este método se torna fácil e vale muito a pena. Vejamos:
+
+O primeiro campo é o **Model Class** onde vamos informar o caminho dos models criados no passo anterior, no nosso caso ficaria assim:
+```
+app\modules\admin\modules\categorias\models\Categoria
+```
+Agora temos que indicar um caminho para a **Search Model Class**, esta classe vai gerar algumas buscas automáticamente, para que possamos encontrar mais facilmente algum curso ou categoria na listagem. Este passo é opcional mas recomendado.
+
+```
+app\modules\admin\modules\categorias\models\CategoriaSearch
+```
+No próximo passo vamos fazer algo bem importante, observe nas pastas criadas quando criamos nosso módulo que ele gerou na pasta controllers do nosso módulo um arquivo DefaultController.php, assim mesmo sem um model e sem o crudo já era possível acessar o módulo e nos era exibido uma página index do módulo com a indicaçao do caminho para altera-la. Porém como queremos logo ao digitar nossosite/admin/categorias visualizar diretamente uma listagem com nossas categorias, durante a criação do nosso CRUD vamos sobrescrever esse Controller.
+Então no campo **Controller Class**, teremos o seguinte:
+```
+app\modules\admin\modules\categorias\controllers\DefaultController
+```
+Estamos quase lá, o próximo passo é alterar o **Module ID**, que esta preenchido e desabilitado. Vamos clicar neste campo e alterar o ID para:
+```
+admin/categorias
+```
+Tudo pronto mas **ATENÇÃO**, agora quando clicarmos em Generate observe que dois arquivos serão marcados como já existentes, devemos selecionar estes dois arquivos para que sejam sobrescritos, e alterados.
