@@ -263,3 +263,16 @@ Nosso **web.php** em **modules** deverá ficar da seguinte forma:
         ],
     ],
 ```
+
+### Criando models, Categoria e Curso
+
+Ainda no **gii** vamos em Model Generator, aqui vamos preencher o campo **Table name** extamente com o nome da tabela criada em nosso banco de dados, o nome da nossa classe já deve surgir no campo **Model Class**, cabe apenas que cuidemos para manter o nome desta classe no singular seguindo um padrão de desenvolvimento.
+
+>OBS: Logo abaixo do campo Model Class temos o **Namespace**, este campo aparece preenchido e desabilitado, vamos então clicar nele e indicar o namespace correto para cada um de nossos módulos:
+
+```
+app\modules\admin\modules\cursos\models
+```
+```
+app\modules\admin\modules\categorias\models
+```
