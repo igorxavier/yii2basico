@@ -163,7 +163,15 @@ $config = [
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module',
-            'layout' => 'teste',
+            // 2 - Na terceira configuração, adicionamos os módulos categorias e cursos dentro do módulo admin. 
+            'modules' => [
+                'categorias' => [
+                    'class' => 'app\modules\admin\modules\categorias\Module',
+                ],
+                'cursos' => [
+                    'class' => 'app\modules\admin\modules\cursos\Module',
+                ],
+            ],
         ],
         'user' => [
             'class' => 'dektrium\user\Module',
@@ -237,6 +245,8 @@ Veja no arquivo que tinhamos com algumas configuraçõs prontas a localização 
 Novamente utilizando o **gii** vamos criar em **Module Generator** os módulos, categorias e cursos.
 
 Nosso **web.php** em **modules** deverá ficar da seguinte forma:
+
+###### Terceira configuração
 
 ```php
 'modules' => [
