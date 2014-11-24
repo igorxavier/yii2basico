@@ -163,7 +163,7 @@ $config = [
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module',
-            // 2 - Na terceira configuração, adicionamos os módulos categorias e cursos dentro do módulo admin. 
+            // 3 - Na terceira configuração, adicionamos os módulos categorias e cursos dentro do módulo admin. 
             'modules' => [
                 'categorias' => [
                     'class' => 'app\modules\admin\modules\categorias\Module',
@@ -224,7 +224,7 @@ admin
 
 Assim que geramos nosso módulo será exibido o código para ativalo em nosso sistema.
 
-```
+```php
 <?php
     ......
     'modules' => [
