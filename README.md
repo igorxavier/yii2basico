@@ -207,8 +207,7 @@ Neste campo vamos utilizar exatamente esta recomendação para nosso módulo adm
 ```
 app\modules\admin\Module
 ```
-E em Module Admin
-
+O campo Module ID será preenchido com:
 ```
 admin
 ```
@@ -232,3 +231,25 @@ Assim que geramos nosso módulo será exibido o código para ativalo em nosso si
 Veja no arquivo que tinhamos com algumas configuraçõs prontas a localização exata onde este código deve ser inserido. 
 
 >**OBS:** Respeite a posição do código dentro do array.
+
+### Criando módulos categorias e cursos
+
+Novamente utilizando o **gii** vamos criar em **Module Generator** os módulos, categorias e cursos.
+
+Nosso **web.php** em **modules** deverá ficar da seguinte forma:
+
+```php
+'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            'modules' => [
+                'categorias' => [
+                    'class' => 'app\modules\admin\modules\categorias\Module',
+                ],
+                'cursos' => [
+                    'class' => 'app\modules\admin\modules\cursos\Module',
+                ],
+            ],
+        ],
+    ],
+```
