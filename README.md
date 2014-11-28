@@ -155,7 +155,11 @@ $config = [
         'urlManager' => [
             'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
-            'showScriptName' => false
+            'showScriptName' => false,
+            'rules'=>[
+                //Reescrevendo a url para sumir com o default da url
+                '<modulo:\w+>/<submodulo:\w+>/<action:\w+>' => '<modulo>/<submodulo>/default/<action>',
+            ]
         ],
         'db' => require(__DIR__ . '/db.php'),
     ],
@@ -300,3 +304,58 @@ Estamos quase lá, o próximo passo é alterar o **Module ID**, que esta preench
 admin/categorias
 ```
 Tudo pronto mas **ATENÇÃO**, agora quando clicarmos em Generate observe que dois arquivos serão marcados como já existentes, devemos selecionar estes dois arquivos para que sejam sobrescritos, e alterados.
+
+### Arquivos javascript ou css em módulos
+
+Para que possamos trabalhar com arquivos de script, ou de folhas de estilo, por exemplo, precisamos entender que utilizando estes arquivos dentro de nossos módulos simplesmente, eles ficariam inacessíveis por questão de segurança, visto nada além do que esta na pasta web deve ter permissão de acesso.
+
+Para isso existe uma solução no Yii que esta nos Assets, assim o sistema irá mapear os assets informados por nós e ira criar um atalho, digamos assim, de forma a tornar este arquivos acessíveis de forma segura.
+
+###### Criando uma classe Asset para o módulo
+
+```php
+namespace app\modules\admin\modules\imagens\assets;
+
+use yii\web\AssetBundle;
+
+class MeuAsset extends AssetBundle
+{
+    // Aqui informamos o caminho do nosso asset
+    public $sourcePath  = '@app/modules/admin/modules/imagens/assets';
+    
+    // Agora os arquivos, dentro da pasta asset.
+    public $css = [
+        
+    ];
+    
+    public $js = [
+        'js/teste.js'
+    ];
+    
+    public $depends = [
+        'yii\web\YiiAsset',
+        'yii\bootstrap\BootstrapAsset',
+    ];
+    
+    // Em desenvolvimento devemos usar esta função para desativar o cache deste asset.
+    public $publishOptions = ['forceCopy' => true];
+    
+}
+```
+Neste exemplo criei a Classe **MeuAsset** dentro de uma pasta assets, tudo dentro do módulo imagens, e dentro desta pasta assets, outras duas pastas chamadas de js e css.
+
+###### Registrando o asset.
+
+Para que possamos definitivamente utilzar os scripts e estilos, precisamos agora, usar a classe criada.
+
+```php
+
+use app\modules\admin\modules\imagens\assets\MeuAsset;
+
+// Registrando nosso asset
+MeuAsset::register($this);
+
+```
+
+Com o código acima estamos dando um use na classe e também registrando o asset no sistema.
+Pronto agora basta criarmos nossos arquivos dentro das pastas js e css, sempre definindo o caminho destes dentro da classe.
